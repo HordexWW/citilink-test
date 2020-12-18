@@ -14,10 +14,44 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    @FindBy(xpath = "//*[@id=\"login_form_show_js\"]")
-    WebElement logButton;
+    @FindBy(className = "AuthPopup")
+    private WebElement logButton;
 
-    public void logButtonClick(){
+    @FindBy(className = "SignIn__action")
+    private WebElement enterLogButton;
+
+    @FindBy(name = "login")
+    private WebElement loginField;
+
+    @FindBy(name = "pass")
+    private WebElement passwdField;
+
+    @FindBy(className = "HeaderUserName")
+    private WebElement userAccountMenu;
+
+    @FindBy (partialLinkText = "Мой профиль")
+    private WebElement userProfile;
+
+    public void inputLogin(String login) {
+        loginField.sendKeys(login);
+    }
+    public void inputPasswd(String passwd) {
+        passwdField.sendKeys(passwd);
+    }
+    public void clickFirstLoginBtn() {
         logButton.click();
     }
+    public void clickSecondLoginBtn() {
+        enterLogButton.click();
+    }
+    public String getUserName() {
+        return userAccountMenu.getText();
+    }
+    public void clickUserMenu() {
+        userAccountMenu.click();
+    }
+    public void clickMyProfile() {
+        userProfile.click();
+    }
+
 }

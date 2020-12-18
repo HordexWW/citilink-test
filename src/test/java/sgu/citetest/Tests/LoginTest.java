@@ -1,5 +1,7 @@
 package sgu.citetest.Tests;
 
+import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -12,13 +14,14 @@ import java.util.concurrent.TimeUnit;
 public class LoginTest {
 
     private static LoginPage loginPage;
+    private static WebDriver driver;
 
     @BeforeClass
     public static void setup() {
         //определение пути до драйвера и его настройка
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         //создание экземпляра драйвера
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         //окно разворачивается на полный экран
         driver.manage().window().maximize();
         //задержка на выполнение теста = 10 сек.
@@ -29,6 +32,20 @@ public class LoginTest {
     }
 
     @Test
-    public void loginTest() {
+    public void loginTest() throws InterruptedException {
+        loginPage.clickFirstLoginBtn();
+        loginPage.inputLogin(ConfProperties.getProperty("login"));
+        loginPage.inputPasswd(ConfProperties.getProperty("password"));
+        Thread.sleep(10000);
+        loginPage.clickSecondLoginBtn();
+        String user = loginPage.getUserName();
+        Assert.assertEquals(ConfProperties.getProperty("name"), user);
     }
+
+    @AfterClass
+    public static void ExitDriver()
+    {
+        driver.quit();
+    }
+
 }
