@@ -38,19 +38,19 @@ public class LoginPage {
     public void inputPasswd(String passwd) {
         passwdField.sendKeys(passwd);
     }
-    public void clickFirstLoginBtn() {
+    public void clickLoginButton() {
         logButton.click();
     }
-    public void clickSecondLoginBtn() {
+    public void clickEnterLoginButton() {
         enterLogButton.click();
     }
     public String getUserName() {
         return userAccountMenu.getText();
     }
-    public void clickUserMenu() {
+    public void clickUserAccountMenu() {
         userAccountMenu.click();
     }
-    public void clickMyProfile() {
+    public void clickUserProfile() {
         userProfile.click();
     }
 
