@@ -53,8 +53,7 @@ public class CityTest {
     }
 
     @AfterClass
-    public static void quit()
-    {
+    public static void quit() {
         driver.quit();
     }
 }

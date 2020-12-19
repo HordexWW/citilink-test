@@ -22,10 +22,12 @@ public class CityPage {
     private WebElement address;
 
     public void clickChangeCity() {
-        city.click(); }
+        city.click();
+    }
     public String getCityName() {
         String cityName = city.getText();
-        return new String(cityName.getBytes(StandardCharsets.UTF_8)); }
+        return new String(cityName.getBytes(StandardCharsets.UTF_8));
+    }
     public String getDeliveryAddress(){
         return address.getText().split(",")[0];
     }
