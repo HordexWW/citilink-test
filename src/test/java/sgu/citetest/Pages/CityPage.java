@@ -24,6 +24,7 @@ public class CityPage {
     public void clickChangeCity() {
         city.click();
     }
+
     public String getCityName() {
         String cityName = city.getText();
         return new String(cityName.getBytes(StandardCharsets.UTF_8));

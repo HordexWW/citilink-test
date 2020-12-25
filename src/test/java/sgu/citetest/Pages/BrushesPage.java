@@ -1,5 +1,6 @@
 package sgu.citetest.Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,15 +33,21 @@ public class BrushesPage {
     @FindBy(name = "input-max")
     private WebElement inputMax;
 
+    @FindBy(css = "body > div.MainWrapper > div.MainLayout.js--MainLayout.HeaderFixer > main > section > div.Container.Container_has-grid.ProductCardCategoryList.js--ProductCardCategoryList > div.block_data__gtm-js.block_data__pageevents-js.listing_block_data__pageevents-js.ProductCardCategoryList__products-container > div.ProductCardCategoryList__sorting-panel > div.ProductCardCategoryList__view-type > label.ProductCardCategoryList__icon.ProductCardCategoryList__icon_list > div > span")
+    private WebElement horizontalViewButton;
+
     public void clickCatalogButton(){
         catalogButton.click();
     }
+
     public WebElement getBeautyAndHealthButton(){
         return beautyAndHealthButton;
     }
+
     public void clickBrushesAndAccessoriesButton(){
         brushesAndAccessoriesButton.click();
     }
+
     public void clickBrushesButton(){
         brushesButton.click();
     }
@@ -53,5 +60,8 @@ public class BrushesPage {
         inputMax.clear();
         inputMax.sendKeys("1999");
         inputMax.sendKeys(Keys.ENTER);
+    }
+    public void clickHorizontalViewButton() {
+        horizontalViewButton.click();
     }
 }

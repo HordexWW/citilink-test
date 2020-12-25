@@ -4,17 +4,36 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import sgu.citetest.Pages.CityPage;
 import sgu.citetest.Pages.LoginPage;
 import sgu.citetest.Properties.ConfProperties;
+
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
+@RunWith(value = Parameterized.class)
 public class CityTest {
     public static LoginPage loginPage;
     public static CityPage cityPage;
     public static WebDriver driver;
+    private String city;
+
+    public CityTest(String city) {
+        this.city = city;
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> GetCities()
+    {
+        return Arrays.asList(new Object[][]{
+                { "Казань" }, { "Москва" }, { "Волгоград" },{ "Энгельс" }
+        });
+    }
 
     @BeforeClass
     public static void setup() {
@@ -33,23 +52,10 @@ public class CityTest {
     @Test
     public void сityTest() throws InterruptedException {
         cityPage.clickChangeCity();
-        cityPage.clickCity(ConfProperties.getProperty("city"));
+        cityPage.clickCity(city);
 
-        String city = cityPage.getCityName();
-        Assert.assertEquals(ConfProperties.getProperty("city"), city);
-
-        loginPage.clickLoginButton();
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-
-        Thread.sleep(10000);
-
-        loginPage.clickEnterLoginButton();
-        loginPage.clickUserAccountMenu();
-        loginPage.clickUserProfile();
-
-        String cityInAddress = cityPage.getDeliveryAddress();
-        Assert.assertEquals(city, cityInAddress);
+        String currentCity = cityPage.getCityName();
+        Assert.assertEquals(city, currentCity);
     }
 
     @AfterClass

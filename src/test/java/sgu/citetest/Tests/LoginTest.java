@@ -40,8 +40,7 @@ public class LoginTest {
     }
 
     @AfterClass
-    public static void ExitDriver()
-    {
+    public static void quit() {
         driver.quit();
     }
 

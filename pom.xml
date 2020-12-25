@@ -23,6 +23,18 @@
                 <version>4.13</version>
                 <scope>compile</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>7.3.0</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- https://mvnrepository.com/artifact/org.testing/testng -->
+
+
 
 
         </dependencies>
@@ -30,5 +42,16 @@
     <artifactId>sgu.citetest</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

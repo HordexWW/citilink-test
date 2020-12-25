@@ -1,11 +1,13 @@
 package sgu.citetest.Tests;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import sgu.citetest.Pages.BrushesPage;
 import sgu.citetest.Pages.CityPage;
 import sgu.citetest.Pages.LoginPage;
@@ -47,9 +49,16 @@ public class AddingBrushesTest {
         brushesPage.enterInInputMin();
         brushesPage.enterInInputMax();
 
-        //List<WebElement> elements =  driver.findElements(By.className("product_data__gtm-js product_data__pageevents-js  ProductCardVertical js--ProductCardInListing ProductCardVertical_normal ProductCardVertical_shadow-hover ProductCardVertical_separated ProductCardVertical_separated-below-slider"));
 
+        brushesPage.clickHorizontalViewButton();
+
+
+        List<WebElement> elements =  driver.findElements(By.className("ProductCardHorizontal__description-block"));
+        //elements.get(0).findElement(By.partialLinkText("В корзину")).click();
     }
-
+//    @AfterClass
+//    public static void quit() {
+//        driver.quit();
+//    }
 
 }
